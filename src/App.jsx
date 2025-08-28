@@ -20,7 +20,11 @@ useEffect(() => {
 }, [dispatch]);
 
 if (state.loading || state.sneakers.length === 0) {
-    return <div className='text-center text-blue-500'>Loading...</div>;
+    return(
+      <div className="flex items-center justify-center h-full">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent"></div>
+      </div>
+    )
   }
 
   const onNext = () => {
