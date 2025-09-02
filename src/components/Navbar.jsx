@@ -13,7 +13,11 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
-      <h1 className="text-2xl font-bold text-red-500">Star Kicks</h1>
+      <h1 className="text-2xl font-bold text-red-500">
+         <Link to="/">
+        Star Kicks
+      </Link>
+        </h1>
       <ul className="hidden md:flex text-lg font-medium gap-6 text-gray-600">
         <li className="hover:text-red-500 cursor-pointer">
           <Link  to="/">Home</Link>
