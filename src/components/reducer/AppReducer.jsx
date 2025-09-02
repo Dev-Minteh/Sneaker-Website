@@ -65,7 +65,7 @@ export function reducer(state, action) {
             return { ...state, modalVisible: !state.modalVisible };
 
            case "CLEAR_CART":
-            return [];
+            return {...state,  cart: [] };
           default:
             return state;
       

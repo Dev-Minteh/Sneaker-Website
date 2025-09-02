@@ -1,53 +1,22 @@
-// import { FaShoppingCart } from "react-icons/fa";
-// import { Link } from "react-router";
-// export default function Navbar({ cartCount, onCartClick }) {
-//   return (
-//     <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md sticky top-0 z-50">
-//       <h1 className="text-2xl font-bold text-red-500">Mollar Kicks</h1>
-//       <ul className="flex text-xl font-medium gap-6 text-gray-600">
-//         <li className="hover:text-red-500 cursor-pointer">
-//         <Link to="/">
-//             Home
-//         </Link>
-//         </li>
-//         <li className="hover:text-red-500 cursor-pointer">
-//         <Link to="/store">
-//         Store
-//         </Link>
-//         </li>
-//         <li className="hover:text-red-500 cursor-pointer">
-//         <Link to="/about">
-//             About
-//         </Link>
-//         </li>
-//       </ul>
-//       <div className="relative cursor-pointer" onClick={onCartClick}>
-//         <FaShoppingCart size={24} className="text-gray-600"/>
-//         {cartCount > 0 && (
-//           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-//             {cartCount}
-//           </span>
-//         )}
-//       </div>
-//     </nav>
-//   );
-// }
-
-
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
+import { useGlobalContext } from '../context/AppContext';
 
-export default function Navbar({ cartCount, onCartClick }) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  const { state } = useGlobalContext();
+  const cartCount = state.cart.reduce((sum, item) => sum + item.qty, 0);
+
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
-      <h1 className="text-2xl font-bold text-red-500">Mollar Kicks</h1>
+      <h1 className="text-2xl font-bold text-red-500">Star Kicks</h1>
       <ul className="hidden md:flex text-lg font-medium gap-6 text-gray-600">
         <li className="hover:text-red-500 cursor-pointer">
-          <Link to="/">Home</Link>
+          <Link  to="/">Home</Link>
         </li>
         <li className="hover:text-red-500 cursor-pointer">
           <Link to="/store">Store</Link>
@@ -58,11 +27,11 @@ export default function Navbar({ cartCount, onCartClick }) {
       </ul>
       <div className="flex items-center gap-4">
         {/* Cart */}
-        <div className="relative cursor-pointer" onClick={onCartClick}>
+        <div className="relative cursor-pointer">
           <Link to="/cart">
            <FaShoppingCart size={24} className="text-gray-600" />
           {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
               {cartCount}
             </span>
           )}

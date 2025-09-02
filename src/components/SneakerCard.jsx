@@ -13,7 +13,6 @@ function SneakerCard({ sneaker }) {
 
   return (
     <div onClick={handleClick} className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition p-4">
-            {/* // <div  className="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-500"> */}
       <img src={sneaker.image[0]} alt={sneaker.name} className="w-full h-64 object-cover rounded-md" />
       <h2 className="mt-2 text-xl text-gray-600 font-semibold">{sneaker.name}</h2>
       <p className="text-gray-500">{sneaker.brand}</p>
